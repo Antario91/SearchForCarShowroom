@@ -26,13 +26,13 @@ public class CarKit implements Serializable{
 	@Column(name = "`Radio equipment`")
 	private boolean radioEquipment;
 	
-	@Column(name = "`Ñruise ñontrol`")
+	@Column(name = "`Cruise control`")
 	private boolean cruiseControl;
 
 	@Column(name = "Cost")
 	private int cost;
 
-	@Column(name = "Opisanie")
+	@Column(name = "Description")
 	private String description;
 	
 	@ManyToOne

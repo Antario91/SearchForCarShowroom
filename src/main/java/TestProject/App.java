@@ -36,7 +36,8 @@ public class App
         initializer.initDB();
 
         creationService service = (creationService) context1.getBean("creationServiceImpl");
-        service.findManufacturingPlantByCountry("Ukraine");
+
+//        service.findManufacturingPlantByCountry("Ukraine");
 //        Set<CarKit>  kit = service.findAllCarKitsForAutomobile("Fabia");
 //        Iterator<CarKit> itr = kit.iterator();
 //        while (itr.hasNext()){

@@ -96,14 +96,27 @@ public class creationServiceImpl implements creationService {
     }
 
     @Override
-    public void addPlantToAutomobile(Automobile auto, ManufacturingPlant factory) {
-        auto.addManufacturingPlant(factory);
+    public void addPlantToAutomobile(String autoModel, String factoryCountry) {
+        Automobile automobile = autoRepo.getByModel(autoModel);
+        ManufacturingPlant manufacturingPlant = factoryRepo.getByCountry(factoryCountry);
+        automobile.addManufacturingPlant(manufacturingPlant);
+        System.out.println("addPlantToAutomobile +1");
     }
 
     @Override
-    public void addCarShowRoomToCarKit(CarKit kit, CarShowroom showroom) {
-        kit.addCarShowroom(showroom);
+    public void addCarShowRoomToCarKitByCost(int minCostCarKit, int maxCostCarKit, String nameOfShowroom) {
+        CarShowroom showroom = showroomRepo.getByName(nameOfShowroom);
+        List<CarKit> kits = kitRepo.getByCost(minCostCarKit, maxCostCarKit);
+        Iterator<CarKit> itr = kits.iterator();
+        CarKit tempCarKit = null;
+        while (itr.hasNext()) {
+            tempCarKit = itr.next();
+            if (tempCarKit.getCost()>=minCostCarKit || tempCarKit.getCost()<=maxCostCarKit) {
+                tempCarKit.addCarShowroom(showroom);
+            }
+        }
     }
+
 
 
 //    @Override

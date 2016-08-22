@@ -48,18 +48,17 @@ public class DBInitializer implements DBInitialize {
             service.createManufacturingPlant("Czech Republic");
             service.createManufacturingPlant("China");
 
-//            service.addPlantToAutomobile(service.findAutomobileByModel("Rapid"),
-//                    service.findManufacturingPlantByCountry("Ukraine"));
-//            service.addPlantToAutomobile(service.findAutomobileByModel("Rapid"),
-//                    service.findManufacturingPlantByCountry("Czech Republic"));
-//            service.addPlantToAutomobile(service.findAutomobileByModel("Octavia"),
-//                    service.findManufacturingPlantByCountry("Czech Republic"));
-//            service.addPlantToAutomobile(service.findAutomobileByModel("Octavia"),
-//                    service.findManufacturingPlantByCountry("China"));
-//            service.addPlantToAutomobile(service.findAutomobileByModel("Fabia"),
-//                    service.findManufacturingPlantByCountry("Ukraine"));
-//            service.addPlantToAutomobile(service.findAutomobileByModel("Fabia"),
-//                    service.findManufacturingPlantByCountry("China"));
+            service.addPlantToAutomobile("Rapid", "Ukraine");
+            service.addPlantToAutomobile("Rapid", "Czech Republic");
+            service.addPlantToAutomobile("Octavia", "Czech Republic");
+            service.addPlantToAutomobile("Octavia", "China");
+            service.addPlantToAutomobile("Fabia", "Ukraine");
+            service.addPlantToAutomobile("Fabia", "China");
+
+            service.addCarShowRoomToCarKitByCost(350000, 350000, "EurocarDP");
+            service.addCarShowRoomToCarKitByCost(500000, 500000, "EurocarDP");
+            service.addCarShowRoomToCarKitByCost(300000, 300000, "SkodaCarDP");
+            service.addCarShowRoomToCarKitByCost(290000, 290000, "SkodaCarDP");
         }
     }
 }

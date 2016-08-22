@@ -14,7 +14,7 @@ public class CarShowroom {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "Title")
+	@Column(name = "Name")
 	private String name;
 	
 	@Embedded

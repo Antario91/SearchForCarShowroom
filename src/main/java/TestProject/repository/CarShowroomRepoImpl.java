@@ -18,6 +18,6 @@ public class CarShowroomRepoImpl extends GenericRepoImpl<CarShowroom> implements
 
     @Override
     public CarShowroom getByName(String name) {
-        return getOneByField("Title", name);
+        return getOneByField("name", name);
     }
 }

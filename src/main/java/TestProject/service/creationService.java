@@ -23,7 +23,7 @@ public interface creationService {
     ManufacturingPlant findManufacturingPlantByCountry (String country);
     List<CarKit> findAllCarKits();
     Set<CarKit> findAllCarKitsForAutomobile(String model);
-    void addPlantToAutomobile (Automobile auto, ManufacturingPlant factory);
-    void addCarShowRoomToCarKit (CarKit kit, CarShowroom showroom);
+    void addPlantToAutomobile (String autoModel, String factoryCountry);
+    void addCarShowRoomToCarKitByCost (int minCostCarKit, int maxCostCarKit, String nameOfShowroom);
 //    List<?> checkingDataBase ();
 }

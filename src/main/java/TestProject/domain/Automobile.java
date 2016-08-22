@@ -38,7 +38,7 @@ public class Automobile implements Serializable {
 	@Column(name = "`Weight(kg)`")
 	private double weight;
 	
-	@OneToMany(mappedBy = "auto", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "auto", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Set<CarKit> kit;
 	
 //	@ManyToMany(cascade=CascadeType.ALL, mappedBy="auto")

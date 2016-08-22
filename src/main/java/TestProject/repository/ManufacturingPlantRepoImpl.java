@@ -18,6 +18,6 @@ public class ManufacturingPlantRepoImpl extends GenericRepoImpl<ManufacturingPla
 
     @Override
     public ManufacturingPlant getByCountry(String country) {
-        return getOneByField("Country", country);
+        return getOneByField("country", country);
     }
 }
