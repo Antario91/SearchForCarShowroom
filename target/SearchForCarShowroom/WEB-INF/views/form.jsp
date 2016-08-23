@@ -2,7 +2,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <body>
-<h2>Hello World!</h2>
 <form:form modelAttribute="searchObject" action="/result">
     <table>
        <tr>
@@ -20,18 +19,43 @@
             <td>от <form:input path="minCost"/> грн. до <form:input path="maxCost"/> грн.</td>
        </tr>
        <tr>
-            <td>Укажите требуемые <br>
-            характеристики комплектации:</td>
-            <td>Window tinting: <form:select path="windowTinting">
+            <td>
+            <p>Укажите требуемые характеристики комплектации:</p>
+            <p>Тонировка стекла: <form:select path="windowTinting">
                                     <form:option value="null">Не учитывать</form:option>
                                     <form:option value="true">+</form:option>
                                     <form:option value="false">-</form:option>
-                                </form:select> <br></td>
+                              </form:select>
+            </p>
+            <p>Легкосплавные диски: <form:select path="alloyWheels">
+                                        <form:option value="null">Не учитывать</form:option>
+                                        <form:option value="true">+</form:option>
+                                        <form:option value="false">-</form:option>
+                                 </form:select>
+            </p>
+            <p>Immobiliser: <form:select path="immobiliser">
+                                <form:option value="null">Не учитывать</form:option>
+                                <form:option value="true">+</form:option>
+                                <form:option value="false">-</form:option>
+                         </form:select>
+            </p>
+            <p>Радиоподготовка: <form:select path="radioEquipment">
+                                    <form:option value="null">Не учитывать</form:option>
+                                    <form:option value="true">+</form:option>
+                                    <form:option value="false">-</form:option>
+                             </form:select>
+            </p>
+            <p>Круиз-контроль: <form:select path="cruiseControl">
+                                    <form:option value="null">Не учитывать</form:option>
+                                    <form:option value="true">+</form:option>
+                                    <form:option value="false">-</form:option>
+                            </form:select>
+            <p>
+            </td>
        </tr>
-
         <tr>
-            <td colspan="2">
-                <input type="submit" value="Save Changes"/>
+            <td>
+                <input type="submit" value="Поиск"/>
             </td>
         </tr>
     </table>

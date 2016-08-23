@@ -6,10 +6,13 @@ import TestProject.resultOfSearch.searchObject;
 import TestProject.service.creationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 /**
  * Created by AlexandrGoloborodko on 21.08.16.
@@ -44,7 +47,9 @@ public class HelloController {
 
     @RequestMapping(path = "/result", method = RequestMethod.POST)
     public ModelAndView result(@ModelAttribute("searchObject") searchObject search){
-        return new ModelAndView("result", "searchObject", search);
+        Map<String, Object> model = new ModelMap("searchObject", search);
+        model.put("description", search.getDescription());
+        return new ModelAndView("result", model);
 
     }
 }
