@@ -29,8 +29,6 @@ public class creationServiceImpl implements creationService {
     @Autowired
     private ManufacturingPlantRepo factoryRepo;
 
-//    @Autowired
-//    private GenericRepo<?> genericRepo;
 
     @Override
     public Automobile createAutomobile(String model, double maxPower, double maxTorque, double maxSpeed,
@@ -67,35 +65,6 @@ public class creationServiceImpl implements creationService {
     }
 
     @Override
-    public List<Automobile> findAllAutomobile() {
-        return autoRepo.getAllEntity();
-    }
-
-    public List<CarKit> findAllCarKits(){
-        return kitRepo.getAllEntity();
-    }
-
-    @Override
-    public Automobile findAutomobileByModel(String model) {
-        return autoRepo.getByModel(model);
-    }
-
-    @Override
-    public ManufacturingPlant findManufacturingPlantByCountry(String country) {
-        return factoryRepo.getByCountry(country);
-    }
-
-    public Set<CarKit> findAllCarKitsForAutomobile(String model){
-        Iterator<CarKit> itr = autoRepo.getByModel(model).getCarKit().iterator();
-        while (itr.hasNext()){
-            CarKit temp = itr.next();
-            System.out.println(temp);
-            System.out.println();
-        }
-        return autoRepo.getByModel(model).getCarKit();
-    }
-
-    @Override
     public void addPlantToAutomobile(String autoModel, String factoryCountry) {
         Automobile automobile = autoRepo.getByModel(autoModel);
         ManufacturingPlant manufacturingPlant = factoryRepo.getByCountry(factoryCountry);
@@ -116,13 +85,4 @@ public class creationServiceImpl implements creationService {
             }
         }
     }
-
-
-
-//    @Override
-//    public List<?> checkingDataBase() {
-//        return genericRepo.checkingDataBases();
-//    }
-
-
 }

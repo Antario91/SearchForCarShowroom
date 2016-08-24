@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by AlexandrGoloborodko on 21.08.16.
@@ -41,4 +42,27 @@ public class CarKitRepoImpl extends GenericRepoImpl<CarKit> implements CarKitRep
                 .add(Restrictions.le("cost", maxCost))
                 .list();
     }
+
+    @Override
+    public List<CarKit> getByCostAndDescription(Map<String, Integer> processedPrice, String description) {
+        return sessionFactory.getCurrentSession()
+                .createCriteria(CarKit.class)
+                .add(Restrictions.ge("cost", processedPrice.get("minCost")))
+                .add(Restrictions.le("cost", processedPrice.get("maxCost")))
+                .add(Restrictions.ilike("description", description))
+                .list();
+    }
+
+    @Override
+    public List<CarKit> getByAutoIDAndCostAndDescription(int id, Map<String, Integer> processedPrice, String description) {
+        return sessionFactory.getCurrentSession()
+                .createCriteria(CarKit.class)
+                .add(Restrictions.eq("auto_ID", id))
+                .add(Restrictions.ge("cost", processedPrice.get("minCost")))
+                .add(Restrictions.le("cost", processedPrice.get("maxCost")))
+                .add(Restrictions.ilike("description", description))
+                .list();
+    }
+
+
 }

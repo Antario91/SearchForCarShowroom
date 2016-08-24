@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "Automobile")
@@ -39,7 +38,7 @@ public class Automobile implements Serializable {
 	private double weight;
 	
 	@OneToMany(mappedBy = "auto", orphanRemoval = true, cascade = CascadeType.ALL)
-	private Set<CarKit> kit;
+	private List<CarKit> carKit;
 	
 //	@ManyToMany(cascade=CascadeType.ALL, mappedBy="auto")
 //	private Set<ManufacturingPlant> factories;
@@ -126,12 +125,12 @@ public class Automobile implements Serializable {
 		this.weight = weight;
 	}
 	
-	public Set<CarKit> getCarKit(){
-		return kit;
+	public List<CarKit> getCarKit(){
+		return carKit;
 	}
 	
-	public void setCarKit(Set<CarKit> kit){
-		this.kit = kit;
+	public void setCarKit(List<CarKit> kit){
+		this.carKit = kit;
 	}
 	
 //	public Set<ManufacturingPlant> getFactories() {

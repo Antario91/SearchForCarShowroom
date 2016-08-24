@@ -18,12 +18,6 @@ public interface creationService {
                          boolean cruiseControl, int cost);
     CarShowroom createCarShowroom (String name, String country, String city, String street);
     ManufacturingPlant createManufacturingPlant (String country);
-    List<Automobile> findAllAutomobile ();
-    Automobile findAutomobileByModel(String model);
-    ManufacturingPlant findManufacturingPlantByCountry (String country);
-    List<CarKit> findAllCarKits();
-    Set<CarKit> findAllCarKitsForAutomobile(String model);
     void addPlantToAutomobile (String autoModel, String factoryCountry);
     void addCarShowRoomToCarKitByCost (int minCostCarKit, int maxCostCarKit, String nameOfShowroom);
-//    List<?> checkingDataBase ();
 }

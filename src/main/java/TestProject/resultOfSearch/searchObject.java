@@ -2,10 +2,12 @@ package TestProject.resultOfSearch;
 
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Admin on 22.08.2016.
  */
-@Component
 public class searchObject {
     private String model = null;
     private int minCost = 0;
@@ -82,18 +84,32 @@ public class searchObject {
 
     public String getDescription (){
         StringBuffer temp = new StringBuffer(0);
-        if(getWindowTinting() != null)
-            temp.append("windowTinting-" + getWindowTinting() + " % ");
-        if(getAlloyWheels() != null)
-            temp.append(" % " + "alloyWheels-" + getAlloyWheels() + " % ");
-        if(getImmobiliser() != null)
-            temp.append(" % " + "immobiliser-" + getImmobiliser() + " % ");
-        if(getRadioEquipment() != null)
-            temp.append(" % " + "radioEquipment-" + getRadioEquipment() + " % ");
-        if(getCruiseControl() != null)
-            temp.append(" % " + "cruiseControl-" + getCruiseControl());
+        if(!getWindowTinting().equals("null"))
+            temp.append("windowTinting-" + getWindowTinting() + "%");
+        if(!getAlloyWheels().equals("null"))
+            temp.append("%" + "alloyWheels-" + getAlloyWheels() + "%");
+        if(!getImmobiliser().equals("null"))
+            temp.append("%" + "immobiliser-" + getImmobiliser() + "%");
+        if(!getRadioEquipment().equals("null"))
+            temp.append("%" + "radioEquipment-" + getRadioEquipment() + "%");
+        if(!getCruiseControl().equals("null"))
+            temp.append("%" + "cruiseControl-" + getCruiseControl());
         if(temp.length() == 0)
             temp.append("%");
         return temp.toString();
     }
+
+    public Map<String, Integer> pricesHandler() {
+        Map<String, Integer> result = new HashMap<>();
+        if (minCost < 0)
+            minCost = 0;
+
+        if (maxCost < 0 || maxCost == 0)
+            maxCost = 1000000000;
+
+        result.put("minCost", minCost);
+        result.put("maxCost", maxCost);
+        return result;
+    }
+
 }

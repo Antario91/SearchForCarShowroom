@@ -5,13 +5,13 @@
 <form:form modelAttribute="searchObject" action="/result">
     <table>
        <tr>
-           <td>Выберете модель автомобиля:</td>
            <td>
-               <form:select path="model">
-                   <form:option value="Rapid"/>
-                   <form:option value="Octavia"/>
-                   <form:option value="Fabia"/>
-               </form:select>
+           <p>Выберете модель автомобиля: <form:select path="model">
+                                               <form:option value="null">Не учитывать</form:option>
+                                               <form:option value="Rapid">Rapid</form:option>
+                                               <form:option value="Octavia">Octavia</form:option>
+                                               <form:option value="Fabia">Fabia</form:option>
+                                         </form:select>
            </td>
        </tr>
        <tr>
