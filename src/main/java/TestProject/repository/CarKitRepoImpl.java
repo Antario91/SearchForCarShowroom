@@ -27,6 +27,14 @@ public class CarKitRepoImpl extends GenericRepoImpl<CarKit> implements CarKitRep
     }
 
     @Override
+    public CarKit getOneByDescription(String description) {
+        return (CarKit) sessionFactory.getCurrentSession()
+                .createCriteria(CarKit.class)
+                .add(Restrictions.eq("description", description))
+                .uniqueResult();
+    }
+
+    @Override
     public List<CarKit> getByDescription(String description) {
         return sessionFactory.getCurrentSession()
                 .createCriteria(CarKit.class)

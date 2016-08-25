@@ -26,6 +26,7 @@
 /Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/domain/Address.java
 /Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/repository/AutomobileRepo.java
 /Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/service/searchService.java
+/Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/controllers/CarKitPropertyEditor.java
 /Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/repository/ManufacturingPlantRepo.java
 /Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/domain/Automobile.java
 /Users/AlexandrGoloborodko/Java_Projects/SearchForCarShowroom/src/main/java/TestProject/domain/AutomobileManufacturingPlantAdditionalTable.java

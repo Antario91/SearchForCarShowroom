@@ -21,6 +21,7 @@ TestProject/repository/AutomobileRepo.class
 TestProject/domain/testEntity.class
 TestProject/service/serviceForTestEntityImpl.class
 TestProject/repository/GenericRepoImpl.class
+TestProject/controllers/CarKitPropertyEditor.class
 TestProject/domain/ManufacturingPlant.class
 TestProject/App.class
 TestProject/domain/CarKit.class

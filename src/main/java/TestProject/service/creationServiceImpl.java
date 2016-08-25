@@ -85,4 +85,14 @@ public class creationServiceImpl implements creationService {
             }
         }
     }
+
+    @Override
+    public void addCarKitToAutomobile (String model, int carKitId) {
+        Automobile auto = autoRepo.getByModel(model);
+        CarKit kit = kitRepo.getById(carKitId);
+        CarKit temp = new CarKit(kit.isWindowTinting(),kit.isAlloyWheels(),kit.isImmobiliser(),kit.isRadioEquipment(),
+                                    kit.isCruiseControl(),kit.getCost());
+        kit.setAutomobile(auto);
+        kitRepo.add(temp);
+    }
 }

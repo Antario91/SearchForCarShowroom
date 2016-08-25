@@ -14,6 +14,7 @@ import java.util.Set;
 public interface searchService {
     List<Automobile> findAllAutomobile();
     List<CarKit> findAllCarKits();
+    CarKit findCarKitByID(int id);
     Automobile findAutomobileByModel(String model);
     ManufacturingPlant findManufacturingPlantByCountry(String country);
     List<CarKit> findAllCarKitsForAutomobile(String model);

@@ -9,11 +9,11 @@ import TestProject.service.searchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.beans.PropertyEditor;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +31,9 @@ public class HelloController {
 
     @Autowired
     private searchService searchService;
+
+    @Autowired
+    private PropertyEditor editor;
 
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
@@ -80,10 +83,16 @@ public class HelloController {
         return new ModelAndView("new_automobile", model);
     }
 
-    @RequestMapping(path = "/updateDB", method = RequestMethod.POST)
-    public String updateDBWithNewAutomobile(@ModelAttribute("auto") Automobile auto){
+    @RequestMapping(path = "/updateDB", method = RequestMethod.GET)
+    public String updateDBWithNewAutomobile(@ModelAttribute("auto") Automobile auto,@RequestParam("carKit") int carKitID){
         createService.createAutomobile(auto.getModel(),auto.getMaxPower(),auto.getMaxTorque(),auto.getMaxSpeed(),
                                         auto.getAcceleration(),auto.getFuelConsumption(),auto.getWeight());
+        createService.addCarKitToAutomobile(auto.getModel(), carKitID);
         return "index";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(CarKit.class, editor);
     }
 }

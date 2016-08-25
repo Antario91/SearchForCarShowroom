@@ -1,6 +1,7 @@
 package TestProject.domain;
 
 import javax.persistence.*;
+import java.beans.PropertyEditorSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -179,6 +180,5 @@ public class CarKit implements Serializable{
 				"Cruise control -> " + isCruiseControl() + "\n" +
 				"Cost -> " + getCost();
 	}
-	
 
 }

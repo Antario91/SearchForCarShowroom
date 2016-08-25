@@ -3,7 +3,7 @@
 <html>
 <body>
 <h3>Добавление новой модели автомобиля в базу данных</h3>
-<form:form modelAttribute="auto" action="/updateDB">
+<form:form modelAttribute="auto" action="/updateDB" method="GET">
     <table border = "1">
         <tr>
             <td>Название модели: <form:input path="model"/></td>
@@ -27,7 +27,7 @@
             <td>Вес автомобиля: <form:input path="weight"/></td>
         </tr>
         <tr>
-            <td><td>Комплектация для автомобиля: <form:checkboxes path="carKit" items="${kitsList}"/></td></td>
+            <td><td>Комплектация для автомобиля: <form:checkboxes path="carKit" items="${kitsList}" itemValue="id" itemLabel="id"/></td></td>
         </tr>
         <tr>
             <td>

@@ -41,6 +41,11 @@ public class searchServiceImpl implements searchService{
     }
 
     @Override
+    public CarKit findCarKitByID(int id) {
+        return kitRepo.getById(id);
+    }
+
+    @Override
     public Automobile findAutomobileByModel(String model) {
         return autoRepo.getByModel(model);
     }
