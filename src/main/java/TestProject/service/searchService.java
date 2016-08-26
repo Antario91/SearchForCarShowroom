@@ -12,6 +12,7 @@ import java.util.Set;
  * Created by AlexandrGoloborodko on 24.08.16.
  */
 public interface searchService {
+    List<String> getAllAutomobileModels ();
     List<Automobile> findAllAutomobile();
     List<CarKit> findAllCarKits();
     CarKit findCarKitByID(int id);

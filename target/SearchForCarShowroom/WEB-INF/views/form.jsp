@@ -2,25 +2,30 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <body>
+<h2>Выберете критерии поиска:</h2>
 <form:form modelAttribute="searchObject" action="/result">
     <table>
        <tr>
            <td>
            <p>Выберете модель автомобиля: <form:select path="model">
-                                               <form:option value="null">Не учитывать</form:option>
-                                               <form:option value="Rapid">Rapid</form:option>
-                                               <form:option value="Octavia">Octavia</form:option>
-                                               <form:option value="Fabia">Fabia</form:option>
+                                               <form:option value="null" label="Не учитывать"/>
+                                               <form:options items="${modelList}"/>
                                          </form:select>
+           <br>
+           <br>
+           </p>
            </td>
        </tr>
        <tr>
-            <td>Укажите цену автомобиля: </td>
-            <td>от <form:input path="minCost"/> грн. до <form:input path="maxCost"/> грн.</td>
+            <td>Укажите цену автомобиля: от <form:input path="minCost"/> грн. до <form:input path="maxCost"/> грн. <br><br></td>
        </tr>
        <tr>
             <td>
             <p>Укажите требуемые характеристики комплектации:</p>
+            </td>
+       </tr>
+       <tr>
+            <td>
             <p>Тонировка стекла: <form:select path="windowTinting">
                                     <form:option value="null">Не учитывать</form:option>
                                     <form:option value="true">+</form:option>
@@ -54,7 +59,7 @@
             </td>
        </tr>
         <tr>
-            <td>
+            <td align="center">
                 <input type="submit" value="Поиск"/>
             </td>
         </tr>

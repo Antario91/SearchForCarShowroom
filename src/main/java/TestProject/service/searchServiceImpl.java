@@ -32,10 +32,21 @@ public class searchServiceImpl implements searchService{
     private ManufacturingPlantRepo factoryRepo;
 
     @Override
+    public List<String> getAllAutomobileModels () {
+        List<String> models = new ArrayList<>();
+        List<Automobile> autos = findAllAutomobile();
+        for (Automobile auto: autos) {
+            models.add(auto.getModel());
+        }
+        return models;
+    }
+
+    @Override
     public List<Automobile> findAllAutomobile() {
         return autoRepo.getAllEntity();
     }
 
+    @Override
     public List<CarKit> findAllCarKits(){
         return kitRepo.getAllEntity();
     }
@@ -66,10 +77,12 @@ public class searchServiceImpl implements searchService{
         return autoRepo.getByModel(model).getCarKit();
     }
 
+    @Override
     public List<CarKit> findByCostAndDescription(Map<String, Integer> processedPrice, String description){
         return kitRepo.getByCostAndDescription(processedPrice, description);
     }
 
+    @Override
     public List<CarKit> findByAutoModelAndDescription(String model, String description) {
         Automobile auto = autoRepo.getByModel(model);
 
@@ -87,6 +100,7 @@ public class searchServiceImpl implements searchService{
         return temp;
     }
 
+    @Override
     public List<CarKit> findByModelAndCostAndDescription(String model, Map<String, Integer> processedPrice, String description) {
 //        int autoId = autoRepo.getByModel(model).getId();
         List<CarKit> kit = kitRepo.getByCostAndDescription(processedPrice, description);
@@ -96,6 +110,5 @@ public class searchServiceImpl implements searchService{
                 temp.add(kit.get(i));
         }
         return temp;
-
     }
 }

@@ -162,6 +162,7 @@ public class CarKit implements Serializable{
 		if (isAlloyWheels() != carKit.isAlloyWheels()) return false;
 		if (isImmobiliser() != carKit.isImmobiliser()) return false;
 		if (isRadioEquipment() != carKit.isRadioEquipment()) return false;
+		if (getCost() != carKit.getCost())return false;
 		return isCruiseControl() == carKit.isCruiseControl();
 
 	}

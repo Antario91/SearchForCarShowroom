@@ -12,10 +12,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.beans.PropertyEditor;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by AlexandrGoloborodko on 21.08.16.
@@ -46,49 +50,53 @@ public class HelloController {
     @RequestMapping(path = "/form", method = RequestMethod.GET)
     public ModelAndView form(){
         searchObject search = new searchObject();
-        ModelAndView modelAndView = new ModelAndView("form","searchObject",search);
+        List<String> automobileModels = searchService.getAllAutomobileModels();
+        ModelMap model = new ModelMap("searchObject", search);
+        model.put("modelList", automobileModels);
+        ModelAndView modelAndView = new ModelAndView("form",model);
         return modelAndView;
     }
 
     @RequestMapping(path = "/result", method = RequestMethod.POST)
     public ModelAndView result(@ModelAttribute("searchObject") searchObject search){
-        Map<String, Object> model = new ModelMap("searchObject", search);
-
         Map<String, Integer> price = search.pricesHandler();
         List<CarKit> results = null;
 
         if (search.getModel().equals("null")) {
             results = searchService.findByCostAndDescription(price, search.getDescription());
-            model.put("searchingResults", results);
-            return new ModelAndView("result", model);
+            return new ModelAndView("result", "searchingResults", results);
         }
 
         if (search.getModel().equals("null") && price.get("minCost") == 0 && price.get("maxCost") == 1000000000) {
             results = searchService.findByAutoModelAndDescription(search.getModel(), search.getDescription());
-            model.put("searchingResults", results);
-            return new ModelAndView("result", model);
+            return new ModelAndView("result", "searchingResults", results);
         }
 
         results = searchService.findByModelAndCostAndDescription(search.getModel(), price, search.getDescription());
-        model.put("searchingResults", results);
-        return new ModelAndView("result", model);
+        return new ModelAndView("result", "searchingResults", results);
     }
 
     @RequestMapping(path = "/new_automobile", method = RequestMethod.GET)
     public ModelAndView newAutomobile(){
         Automobile auto = new Automobile();
         Map<String, Object> model = new ModelMap("auto", auto);
-        List<CarKit> kitsList = searchService.findAllCarKits();
+        List<CarKit> tempKitsList = searchService.findAllCarKits();
+        Set<CarKit> kitsList = new HashSet<>();
+        for(CarKit kit:tempKitsList){
+            kitsList.add(kit);
+        }
         model.put("kitsList", kitsList);
         return new ModelAndView("new_automobile", model);
     }
 
     @RequestMapping(path = "/updateDB", method = RequestMethod.GET)
-    public String updateDBWithNewAutomobile(@ModelAttribute("auto") Automobile auto,@RequestParam("carKit") int carKitID){
+    public View updateDBWithNewAutomobile(@ModelAttribute("auto") Automobile auto, @RequestParam("carKit") int[] carKitIDs){
         createService.createAutomobile(auto.getModel(),auto.getMaxPower(),auto.getMaxTorque(),auto.getMaxSpeed(),
                                         auto.getAcceleration(),auto.getFuelConsumption(),auto.getWeight());
-        createService.addCarKitToAutomobile(auto.getModel(), carKitID);
-        return "index";
+        for (int i = 0; i < carKitIDs.length; i++) {
+            createService.addCarKitToAutomobile(auto.getModel(), carKitIDs[i]);
+        }
+        return new RedirectView("/");
     }
 
     @InitBinder

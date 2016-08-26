@@ -92,7 +92,7 @@ public class creationServiceImpl implements creationService {
         CarKit kit = kitRepo.getById(carKitId);
         CarKit temp = new CarKit(kit.isWindowTinting(),kit.isAlloyWheels(),kit.isImmobiliser(),kit.isRadioEquipment(),
                                     kit.isCruiseControl(),kit.getCost());
-        kit.setAutomobile(auto);
+        temp.setAutomobile(auto);
         kitRepo.add(temp);
     }
 }
