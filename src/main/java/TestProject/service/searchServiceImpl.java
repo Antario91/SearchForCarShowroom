@@ -121,7 +121,12 @@ public class searchServiceImpl implements searchService{
     }
 
     @Override
-    public Map<Integer, List<ManufacturingPlant>> findFactoriesOfAutomobile(List<CarKit> carKits) {
+    public Map<Integer, List<ManufacturingPlant>> findFactoriesOfAutomobile(List<CarKit> tempCarKits) {
+        List<CarKit> carKits = new ArrayList<>();
+        for(CarKit kit:tempCarKits){
+            carKits.add(kitRepo.getById(kit.getId()));
+        }
+
         Map<Integer, List<ManufacturingPlant>> temp = new HashMap<>();
         List<ManufacturingPlant> factories = new ArrayList<>();
 
@@ -140,7 +145,12 @@ public class searchServiceImpl implements searchService{
     }
 
     @Override
-    public Map<Integer, List<CarShowroom>> findCarShowroomOfCarKit(List<CarKit> carKits) {
+    public Map<Integer, List<CarShowroom>> findCarShowroomOfCarKit(List<CarKit> tempCarKits) {
+        List<CarKit> carKits = new ArrayList<>();
+        for(CarKit kit:tempCarKits){
+            carKits.add(kitRepo.getById(kit.getId()));
+        }
+
         Map<Integer, List<CarShowroom>> temp = new HashMap<>();
         List<CarShowroom> showrooms = new ArrayList<>();
 

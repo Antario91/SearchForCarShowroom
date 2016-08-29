@@ -10,7 +10,7 @@
             <td colspan = "5" align="center">Модель: ${kit.getAuto().model}</td>
         </tr>
         <tr>
-            <td colspan = "2">Характеристики комплектации:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td colspan = "2">Характеристики модели:</td>
+            <td colspan = "2">Характеристики комплектации:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td colspan = "2">Характеристики модели:</td> <td> </td>
         </tr>
         <tr>
             <td>Тонировка стекла:</td> <td>${kit.windowTinting}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная мощность (л.с):</td> <td>${kit.getAuto().maxPower}</td>
