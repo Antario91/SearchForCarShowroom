@@ -7,31 +7,38 @@
 <c:forEach var="kit" items="${searchingResults}">
     <table border = "1">
         <tr>
-            <td colspan = "4" align="center">Модель: ${kit.getAutomobile().model}</td>
+            <td colspan = "5" align="center">Модель: ${kit.getAuto().model}</td>
         </tr>
         <tr>
-            <td colspan = "2">Характеристики комплектации:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td colspan = "2">Характеристики модели:</td>
+            <td colspan = "2">Характеристики комплектации:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td colspan = "2">Характеристики модели:</td> <td>Данная модель производится на заводах, расположенных в следующих странах:</td>
         </tr>
         <tr>
-            <td>Тонировка стекла:</td> <td>${kit.windowTinting}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная мощность (л.с):</td> <td>${kit.getAutomobile().maxPower}</td>
+            <td>Тонировка стекла:</td> <td>${kit.windowTinting}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная мощность (л.с):</td> <td>${kit.getAuto().maxPower}</td> <td> <c:forEach var="factory" items="${factories.get(kit.getId())}">
+                                                                                                                                                                                                    <p>${factory.country}</p>
+                                                                                                                                                                                              </c:forEach>
+                                                                                                                                                                                          </td>
         </tr>
         <tr>
-            <td>Легкосплавные диски:</td> <td>${kit.alloyWheels}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальный крутящий момент (Н*м):</td> <td>${kit.getAutomobile().maxTorque}</td>
+            <td>Легкосплавные диски:</td> <td>${kit.alloyWheels}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальный крутящий момент (Н*м):</td> <td>${kit.getAuto().maxTorque}</td> <td>Модель представлена в следующих автосалонах:</td>
         </tr>
         <tr>
-            <td>Immobiliser:</td> <td>${kit.immobiliser}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная скорость (км/ч):</td> <td>${kit.getAutomobile().maxSpeed}</td>
+            <td>Immobiliser:</td> <td>${kit.immobiliser}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная скорость (км/ч):</td> <td>${kit.getAuto().maxSpeed}</td> <td>Модель представлена в следующих автосалонах:
+                                                                                                                                                                                         <c:forEach var="showroom" items="${showrooms.get(kit.getId())}">
+                                                                                                                                                                                              <p>${showroom.toString()}</p>
+                                                                                                                                                                                         </c:forEach>
+                                                                                                                                                                                   </td>
         </tr>
         <tr>
-            <td>Радиоподготовка:</td> <td>${kit.radioEquipment}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Ускорение 0-100 км/ч(с):</td> <td>${kit.getAutomobile().acceleration}</td>
+            <td>Радиоподготовка:</td> <td>${kit.radioEquipment}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Ускорение 0-100 км/ч(с):</td> <td>${kit.getAuto().acceleration}</td>
         </tr>
         <tr>
-            <td>Круиз-контроль:</td> <td>${kit.cruiseControl}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Расход топлива (л/100 км):</td> <td>${kit.getAutomobile().fuelConsumption}</td>
+            <td>Круиз-контроль:</td> <td>${kit.cruiseControl}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Расход топлива (л/100 км):</td> <td>${kit.getAuto().fuelConsumption}</td>
         </tr>
         <tr>
-            <td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>                                <td>Вес (кг):</td> <td>${kit.getAutomobile().weight}</td>
+            <td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>                                <td>Вес (кг):</td> <td>${kit.getAuto().weight}</td>
         </tr>
         <tr>
-             <td colspan = "4" align="center">Цена: ${kit.cost}</td>
+             <td colspan = "5" align="center">Цена: ${kit.cost}</td>
         </tr>
     </table>
     <br>

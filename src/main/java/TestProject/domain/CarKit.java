@@ -40,7 +40,7 @@ public class CarKit implements Serializable{
 	private Automobile auto;
 
 	@OneToMany(mappedBy = "kit", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CarKitCarShowroomAdditionalTable> kitShowrooms = new ArrayList<CarKitCarShowroomAdditionalTable>();
+	private List<CarKitCarShowroomAdditionalTable> kitShowrooms = new ArrayList<>();
 	
 	//-----------------------------------Constructors
 	public CarKit(){
@@ -129,12 +129,16 @@ public class CarKit implements Serializable{
 				"cruiseControl-" + cruiseControl;
 	}
 
-	public Automobile getAutomobile(){
+	public Automobile getAuto(){
 		return auto;
 	}
 	
-	public void setAutomobile(Automobile auto){
+	public void setAuto(Automobile auto){
 		this.auto = auto;
+	}
+
+	public List<CarKitCarShowroomAdditionalTable> getKitShowrooms() {
+		return kitShowrooms;
 	}
 
 	public void addCarShowroom(CarShowroom showroom) {

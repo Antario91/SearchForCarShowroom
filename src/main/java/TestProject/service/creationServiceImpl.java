@@ -29,6 +29,11 @@ public class creationServiceImpl implements creationService {
     @Autowired
     private ManufacturingPlantRepo factoryRepo;
 
+    @Override
+    public Automobile createAutomobile (Automobile auto) {
+        autoRepo.add(auto);
+        return auto;
+    }
 
     @Override
     public Automobile createAutomobile(String model, double maxPower, double maxTorque, double maxSpeed,
@@ -39,14 +44,26 @@ public class creationServiceImpl implements creationService {
     }
 
     @Override
+    public CarKit createCarKit (CarKit kit) {
+        kitRepo.add(kit);
+        return kit;
+    }
+
+    @Override
     public CarKit createCarKit(String automobileModel, boolean windowTinting, boolean alloyWheels, boolean immobiliser, boolean radioEquipment,
                                boolean cruiseControl, int cost) {
         Automobile auto = autoRepo.getByModel(automobileModel);
         CarKit kit = new CarKit(windowTinting, alloyWheels, immobiliser, radioEquipment, cruiseControl, cost);
-        kit.setAutomobile(auto);
+        kit.setAuto(auto);
         kitRepo.add(kit);
 //        auto.getCarKit().add(kit);
         return kit;
+    }
+
+    @Override
+    public CarShowroom createCarShowroom (CarShowroom showroom) {
+        showroomRepo.add(showroom);
+        return showroom;
     }
 
     @Override
@@ -55,6 +72,12 @@ public class creationServiceImpl implements creationService {
         CarShowroom showroom = new CarShowroom(name, address);
         showroomRepo.add(showroom);
         return showroom;
+    }
+
+    @Override
+    public ManufacturingPlant createManufacturingPlant (ManufacturingPlant factory){
+        factoryRepo.add(factory);
+        return factory;
     }
 
     @Override
@@ -87,12 +110,19 @@ public class creationServiceImpl implements creationService {
     }
 
     @Override
+    public void addCarShowRoomToCarKit(int CarKitID, int CarShowroomID) {
+        CarKit kit = kitRepo.getById(CarKitID);
+        CarShowroom showroom = showroomRepo.getById(CarShowroomID);
+        kit.addCarShowroom(showroom);
+    }
+
+    @Override
     public void addCarKitToAutomobile (String model, int carKitId) {
         Automobile auto = autoRepo.getByModel(model);
         CarKit kit = kitRepo.getById(carKitId);
         CarKit temp = new CarKit(kit.isWindowTinting(),kit.isAlloyWheels(),kit.isImmobiliser(),kit.isRadioEquipment(),
                                     kit.isCruiseControl(),kit.getCost());
-        temp.setAutomobile(auto);
+        temp.setAuto(auto);
         kitRepo.add(temp);
     }
 }

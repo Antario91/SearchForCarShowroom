@@ -132,6 +132,10 @@ public class Automobile implements Serializable {
 	public void setCarKit(List<CarKit> kit){
 		this.carKit = kit;
 	}
+
+	public List<AutomobileManufacturingPlantAdditionalTable> getAutofactory (){
+		return autofactory;
+	}
 	
 //	public Set<ManufacturingPlant> getFactories() {
 //		return factories;

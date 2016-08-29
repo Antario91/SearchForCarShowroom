@@ -80,9 +80,10 @@ public class CarShowroom {
 
 	@Override
 	public String toString() {
-		return "CarShowroom{" +
-				"name='" + name + '\'' +
-				", address=" + address +
-				'}';
+//		return "CarShowroom{" +
+//				"name='" + name + '\'' +
+//				", address=" + address +
+//				'}';
+		return name + " address: " + address;
 	}
 }

@@ -1,8 +1,6 @@
 package TestProject.service;
 
-import TestProject.domain.Automobile;
-import TestProject.domain.CarKit;
-import TestProject.domain.ManufacturingPlant;
+import TestProject.domain.*;
 import TestProject.repository.AutomobileRepo;
 import TestProject.repository.CarKitRepo;
 import TestProject.repository.CarShowroomRepo;
@@ -52,6 +50,11 @@ public class searchServiceImpl implements searchService{
     }
 
     @Override
+    public List<CarShowroom> findAllCarShowroom() {
+        return showroomRepo.getAllEntity();
+    }
+
+    @Override
     public CarKit findCarKitByID(int id) {
         return kitRepo.getById(id);
     }
@@ -64,6 +67,11 @@ public class searchServiceImpl implements searchService{
     @Override
     public ManufacturingPlant findManufacturingPlantByCountry(String country) {
         return factoryRepo.getByCountry(country);
+    }
+
+    @Override
+    public List<ManufacturingPlant> findAllManufacturingPlant() {
+        return factoryRepo.getAllEntity();
     }
 
     @Override
@@ -106,8 +114,46 @@ public class searchServiceImpl implements searchService{
         List<CarKit> kit = kitRepo.getByCostAndDescription(processedPrice, description);
         List<CarKit> temp = new ArrayList<>();
         for (int i = 0; i < kit.size(); i++) {
-            if (kit.get(i).getAutomobile().getModel().equals(model))
+            if (kit.get(i).getAuto().getModel().equals(model))
                 temp.add(kit.get(i));
+        }
+        return temp;
+    }
+
+    @Override
+    public Map<Integer, List<ManufacturingPlant>> findFactoriesOfAutomobile(List<CarKit> carKits) {
+        Map<Integer, List<ManufacturingPlant>> temp = new HashMap<>();
+        List<ManufacturingPlant> factories = new ArrayList<>();
+
+        for(CarKit kit:carKits){
+            List<AutomobileManufacturingPlantAdditionalTable> autofactory= kit.getAuto().getAutofactory();
+
+
+            for (AutomobileManufacturingPlantAdditionalTable additionalTable:autofactory){
+                factories.add(additionalTable.getFactory());
+            }
+
+            temp.put(kit.getId(), factories);
+            factories = new ArrayList<>();
+        }
+        return temp;
+    }
+
+    @Override
+    public Map<Integer, List<CarShowroom>> findCarShowroomOfCarKit(List<CarKit> carKits) {
+        Map<Integer, List<CarShowroom>> temp = new HashMap<>();
+        List<CarShowroom> showrooms = new ArrayList<>();
+
+        for(CarKit kit:carKits){
+            List<CarKitCarShowroomAdditionalTable> kitShowrooms= kit.getKitShowrooms();
+
+
+            for (CarKitCarShowroomAdditionalTable additionalTable:kitShowrooms){
+                showrooms.add(additionalTable.getShowroom());
+            }
+
+            temp.put(kit.getId(), showrooms);
+            showrooms = new ArrayList<>();
         }
         return temp;
     }
