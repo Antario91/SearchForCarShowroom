@@ -70,30 +70,30 @@ public class HelloController {
 
         if (search.getModel().equals("null")) {
             results = searchService.findByCostAndDescription(price, search.getDescription());
-            factories = searchService.findFactoriesOfAutomobile(results);
-            showrooms = searchService.findCarShowroomOfCarKit(results);
+//            factories = searchService.findFactoriesOfAutomobile(results);
+//            showrooms = searchService.findCarShowroomOfCarKit(results);
             model.put("searchingResults", results);
-            model.put("factories", factories);
-            model.put("showrooms", showrooms);
+//            model.put("factories", factories);
+//            model.put("showrooms", showrooms);
             return new ModelAndView("result", model);
         }
 
         if (search.getModel().equals("null") && price.get("minCost") == 0 && price.get("maxCost") == 1000000000) {
             results = searchService.findByAutoModelAndDescription(search.getModel(), search.getDescription());
-            factories = searchService.findFactoriesOfAutomobile(results);
-            showrooms = searchService.findCarShowroomOfCarKit(results);
+//            factories = searchService.findFactoriesOfAutomobile(results);
+//            showrooms = searchService.findCarShowroomOfCarKit(results);
             model.put("searchingResults", results);
-            model.put("factories", factories);
-            model.put("showrooms", showrooms);
+//            model.put("factories", factories);
+//            model.put("showrooms", showrooms);
             return new ModelAndView("result", model);
         }
 
         results = searchService.findByModelAndCostAndDescription(search.getModel(), price, search.getDescription());
-        factories = searchService.findFactoriesOfAutomobile(results);
-        showrooms = searchService.findCarShowroomOfCarKit(results);
+//        factories = searchService.findFactoriesOfAutomobile(results);
+//        showrooms = searchService.findCarShowroomOfCarKit(results);
         model.put("searchingResults", results);
-        model.put("factories", factories);
-        model.put("showrooms", showrooms);
+//        model.put("factories", factories);
+//        model.put("showrooms", showrooms);
         return new ModelAndView("result", model);
     }
 
