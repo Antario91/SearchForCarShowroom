@@ -10,7 +10,11 @@
             <td colspan = "5" align="center">Модель: ${kit.getAuto().model}</td>
         </tr>
         <tr>
-            <td colspan = "2">Характеристики комплектации:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td colspan = "2">Характеристики модели:</td> <td> </td>
+            <td colspan = "2">Характеристики комплектации:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td colspan = "2">Характеристики модели:</td> <td rowspan = "3">Данная модель производится на заводах, расположенных в следующих странах:
+                                                                                                                                                            <c:forEach var="factory" items="${factories.get(kit.getId())}">
+                                                                                                                                                                <p>${factory.country}</p>
+                                                                                                                                                            </c:forEach>
+                                                                                                                                                        </td>
         </tr>
         <tr>
             <td>Тонировка стекла:</td> <td>${kit.windowTinting}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная мощность (л.с):</td> <td>${kit.getAuto().maxPower}</td>
@@ -19,7 +23,11 @@
             <td>Легкосплавные диски:</td> <td>${kit.alloyWheels}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальный крутящий момент (Н*м):</td> <td>${kit.getAuto().maxTorque}</td>
         </tr>
         <tr>
-            <td>Immobiliser:</td> <td>${kit.immobiliser}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная скорость (км/ч):</td> <td>${kit.getAuto().maxSpeed}</td>
+            <td>Immobiliser:</td> <td>${kit.immobiliser}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Максимальная скорость (км/ч):</td> <td>${kit.getAuto().maxSpeed}</td> <td rowspan = "4">Модель представлена в следующих автосалонах:
+                                                                                                                                                                                        <c:forEach var="showroom" items="${showrooms.get(kit.getId())}">
+                                                                                                                                                                                            <p>${showroom.toString()}</p>
+                                                                                                                                                                                        </c:forEach>
+                                                                                                                                                                                  </td>
         </tr>
         <tr>
             <td>Радиоподготовка:</td> <td>${kit.radioEquipment}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> <td>Ускорение 0-100 км/ч(с):</td> <td>${kit.getAuto().acceleration}</td>
