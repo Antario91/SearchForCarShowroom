@@ -39,7 +39,7 @@
             <td colspan = "2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>                                <td>Вес (кг):</td> <td>${kit.getAuto().weight}</td>
         </tr>
         <tr>
-             <td colspan = "5" align="center">Цена: ${kit.cost}</td>
+             <td colspan = "5" align="center">Цена: ${kit.cost} грн.</td>
         </tr>
     </table>
     <br>

@@ -2,7 +2,7 @@
 <html>
 <body>
 <h2>Welcome to the Skoda world</h2>
-<p><a href="/form">Поиск</a></p>
+<p><a href="/search">Поиск</a></p>
   <table>
   <tr>
   <td>
@@ -12,7 +12,7 @@
   </td>
   <td>
     <form>
-        <input type="submit" formaction="/new_CarKit" value="Добавить новую комплектацию в БД">
+        <input type="submit" formaction="/new_carKit" value="Добавить новую комплектацию в БД">
     </form>
   </td>
   <td>
@@ -22,7 +22,7 @@
   </td>
   <td>
     <form>
-        <input type="submit" formaction="/new_CarShowroom" value="Добавить новый автосалон в БД">
+        <input type="submit" formaction="/new_carShowroom" value="Добавить новый автосалон в БД">
     </form>
   </td>
   </tr>

@@ -4,7 +4,7 @@
 <html>
 <body>
 <h3>Добавление новой модели автомобиля в базу данных</h3>
-<form:form modelAttribute="auto" action="/updateDB" method="POST">
+<form:form modelAttribute="auto" action="/updateDBWithNewAutomobile" method="GET">
     <table border = "1">
         <tr>
             <td>Название модели: <form:input path="model"/></td>
