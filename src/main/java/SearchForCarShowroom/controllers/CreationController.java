@@ -86,7 +86,7 @@ public class CreationController {
 
     @RequestMapping(path = "/updateDBWithNewManufacturingPlant", method = RequestMethod.POST)
     public View updateDBWithNewManufacturingPlant(@ModelAttribute("factory") ManufacturingPlant factory) {
-        if (factory.getCountry().equals(""))
+        if (!factory.getCountry().equals(""))
             creationService.createManufacturingPlant(factory);
         return new RedirectView("/");
     }
