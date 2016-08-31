@@ -1,9 +1,6 @@
 package SearchForCarShowroom.controllers;
 
-import SearchForCarShowroom.domain.Automobile;
-import SearchForCarShowroom.domain.CarKit;
-import SearchForCarShowroom.domain.CarShowroom;
-import SearchForCarShowroom.domain.ManufacturingPlant;
+import SearchForCarShowroom.domain.*;
 import SearchForCarShowroom.service.CreationService;
 import SearchForCarShowroom.service.SearchService;
 import SearchForCarShowroom.service.UpdateService;
@@ -104,4 +101,14 @@ public class UpdateController {
         }
         return new RedirectView("/");
     }
+
+
+
+    @RequestMapping(path = "/edit/{model}", method = RequestMethod.GET)
+    public ModelAndView modifyAutomobile(@PathVariable("model") String autoModel, ModelMap model) {
+        model.addAllAttributes(searchService.getDataForModifyAutomobile(autoModel));
+        return new ModelAndView("modify_automobile", model);
+    }
+
+
 }

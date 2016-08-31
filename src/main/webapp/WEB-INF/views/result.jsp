@@ -42,6 +42,13 @@
              <td colspan = "5" align="center">Цена: ${kit.cost} грн.</td>
         </tr>
     </table>
+    <table>
+        <tr>
+            <td>
+                <form action = "/edit/${kit.getAuto().model}" method = "GET"><input type="submit" value="Изменить"></form>
+            </td>
+        </tr>
+    </table>
     <br>
     <br>
 </c:forEach>

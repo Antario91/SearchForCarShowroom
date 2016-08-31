@@ -3,7 +3,7 @@
 <html>
 <body>
 <h3>Изменение записи автомобиля в базе данных</h3>
-<form action="/updateAutomobileInDB" method="POST">
+<form action="/edit/${auto.model}" method="POST">
     <table>
         <tr>
             <td>
@@ -40,16 +40,38 @@
                 Вес автомобиля (кг): <input name="weight" value="${auto.weight}" type="text"/>
             </td>
         </tr>
+        </table>
+        <table>
         <tr>
-            <td>
-                Добавить новые комплектации автомобилю: <input type="checkbox" name="newCarKit" value="${auto.weight}" />
-            </td>
+            <td rowspan = "2" valign = "top">Комплектации автомобиля:</td> <td valign = "top">Добавить новые:</td> <td><c:forEach var="kits" items="${new_carKits}">
+                                                                                            <p><input type="checkbox" name="newKits" value="${kits.id}" />${kits.toString()}</p>
+                                                                                          </c:forEach>
+                                                                                          <br>
+                                                                                      </td>
         </tr>
         <tr>
-            <td>
-                Вес автомобиля (кг): <input name="weight" value="${auto.weight}" type="text"/>
-            </td>
+                                                             <td valign = "top">Удалить текущие:</td> <td><c:forEach var="kits" items="${current_carKits}">
+                                                                                            <p><input type="checkbox" name="currentKits" value="${kits.id}" />${kits.toString()}</p>
+                                                                                            </c:forEach>
+                                                                                            <br>
+                                                                                        </td>
         </tr>
+        <tr>
+            <td rowspan = "2" valign = "top">Заводы-изготовители:</td>  <td valign = "top">Добавить новые:</td> <td><c:forEach var="factories" items="${new_factories}">
+                                                                                            <p><input type="checkbox" name="newFactories" value="${factories.country}" />${factories.getCountry()}</p>
+                                                                                        </c:forEach>
+                                                                                        <br>
+                                                                                    </td>
+        </tr>
+        <tr>
+                                                          <td valign = "top">Удалить текущие:</td> <td><c:forEach var="factories" items="${current_factories}">
+                                                                                            <p><input type="checkbox" name="currentFactories" value="${factories.country}" />${factories.getCountry()}</p>
+                                                                                         </c:forEach>
+                                                                                         <br>
+                                                                                    </td>
+        </tr>
+        <tr><td colspan = "2"><input type="checkbox" name="isDeleteAutomobile" value="true" />Удалить автомобиль из БД</td></tr>
+        <tr><td><input type="submit" value="Изменить"></td></tr>
     </table>
 </form>
 </body>

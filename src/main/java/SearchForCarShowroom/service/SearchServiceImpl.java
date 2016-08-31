@@ -207,4 +207,30 @@ public class SearchServiceImpl implements SearchService {
         }
         return temp;
     }
+
+    @Override
+    public Map<String,Object> getDataForModifyAutomobile(String autoModel) {
+        Map<String, Object> temp = new HashMap<>();
+        Automobile auto = findAutomobileByModel(autoModel);
+        temp.put("auto", auto);
+
+        List<CarKit> currentCarKits = auto.getCarKit();
+        temp.put("current_carKits", currentCarKits);
+        List<CarKit> newCarKits = findAllCarKits();
+        newCarKits.removeAll(currentCarKits);
+        temp.put("new_carKits", newCarKits);
+
+        List<AutomobileManufacturingPlantAdditionalTable> autofactory = auto.getAutofactory();
+        List<ManufacturingPlant> currentFactories = new ArrayList<>();
+        for (AutomobileManufacturingPlantAdditionalTable e:autofactory){
+            currentFactories.add(e.getFactory());
+        }
+        temp.put("current_factories", currentFactories);
+
+        List<ManufacturingPlant> newFactories = findAllManufacturingPlant();
+        newFactories.removeAll(currentFactories);
+        temp.put("new_factories", newFactories);
+
+        return temp;
+    }
 }
