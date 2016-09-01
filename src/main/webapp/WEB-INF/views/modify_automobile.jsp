@@ -3,7 +3,7 @@
 <html>
 <body>
 <h3>Изменение записи автомобиля в базе данных</h3>
-<form action="/edit/${auto.model}" method="POST">
+<form action="/edit/${auto.model}/${auto.id}" method="GET">
     <table>
         <tr>
             <td>

@@ -76,12 +76,12 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public List<CarKit> findAllCarKitsForAutomobile(String model){
-        Iterator<CarKit> itr = autoRepo.getByModel(model).getCarKit().iterator();
-        while (itr.hasNext()){
-            CarKit temp = itr.next();
-            System.out.println(temp);
-            System.out.println();
-        }
+//        Iterator<CarKit> itr = autoRepo.getByModel(model).getCarKit().iterator();
+//        while (itr.hasNext()){
+//            CarKit temp = itr.next();
+//            System.out.println(temp);
+//            System.out.println();
+//        }
         return autoRepo.getByModel(model).getCarKit();
     }
 

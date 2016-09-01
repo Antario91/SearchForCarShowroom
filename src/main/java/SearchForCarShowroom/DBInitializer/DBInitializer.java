@@ -2,6 +2,7 @@ package SearchForCarShowroom.DBInitializer;
 
 import SearchForCarShowroom.service.CreationService;
 import SearchForCarShowroom.service.SearchService;
+import SearchForCarShowroom.service.UpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,10 +25,13 @@ public class DBInitializer implements DBInitialize {
     }*/
 
     @Autowired
-    CreationService createService;
+    private CreationService createService;
 
     @Autowired
-    SearchService serviceSearch;
+    private SearchService serviceSearch;
+
+    @Autowired
+    private UpdateService updateService;
 
     @Override
     public void initDB() {
@@ -48,17 +52,17 @@ public class DBInitializer implements DBInitialize {
             createService.createManufacturingPlant("Czech Republic");
             createService.createManufacturingPlant("China");
 
-            createService.addPlantToAutomobile("Rapid", "Ukraine");
-            createService.addPlantToAutomobile("Rapid", "Czech Republic");
-            createService.addPlantToAutomobile("Octavia", "Czech Republic");
-            createService.addPlantToAutomobile("Octavia", "China");
-            createService.addPlantToAutomobile("Fabia", "Ukraine");
-            createService.addPlantToAutomobile("Fabia", "China");
+            updateService.addPlantToAutomobile("Rapid", "Ukraine");
+            updateService.addPlantToAutomobile("Rapid", "Czech Republic");
+            updateService.addPlantToAutomobile("Octavia", "Czech Republic");
+            updateService.addPlantToAutomobile("Octavia", "China");
+            updateService.addPlantToAutomobile("Fabia", "Ukraine");
+            updateService.addPlantToAutomobile("Fabia", "China");
 
-            createService.addCarShowRoomToCarKitByCost(350000, 350000, "EurocarDP");
-            createService.addCarShowRoomToCarKitByCost(500000, 500000, "EurocarDP");
-            createService.addCarShowRoomToCarKitByCost(300000, 300000, "SkodaCarDP");
-            createService.addCarShowRoomToCarKitByCost(290000, 290000, "SkodaCarDP");
+            updateService.addCarShowRoomToCarKitByCost(350000, 350000, "EurocarDP");
+            updateService.addCarShowRoomToCarKitByCost(500000, 500000, "EurocarDP");
+            updateService.addCarShowRoomToCarKitByCost(300000, 300000, "SkodaCarDP");
+            updateService.addCarShowRoomToCarKitByCost(290000, 290000, "SkodaCarDP");
         }
     }
 }

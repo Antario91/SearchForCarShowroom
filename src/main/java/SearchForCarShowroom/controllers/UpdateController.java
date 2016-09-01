@@ -71,7 +71,7 @@ public class UpdateController {
         if (kitsIDs != null && showroomsIDs != null){
             for (int i = 0; i < kitsIDs.length; i++) {
                 for (int j = 0; j < showroomsIDs.length; j++) {
-                    creationService.addCarShowRoomToCarKit(kitsIDs[i], showroomsIDs[j]);
+                    updateService.addCarShowRoomToCarKit(kitsIDs[i], showroomsIDs[j]);
                 }
             }
         }
@@ -96,7 +96,7 @@ public class UpdateController {
     public View updateAutomobileWithNewManufacturingPlant (@RequestParam("modelAuto") String modelAuto, @RequestParam(name = "country", required = false) String[] factoryCountry){
         if (factoryCountry != null) {
             for (int i = 0; i < factoryCountry.length; i++) {
-                creationService.addPlantToAutomobile(modelAuto, factoryCountry[i]);
+                updateService.addPlantToAutomobile(modelAuto, factoryCountry[i]);
             }
         }
         return new RedirectView("/");
@@ -104,10 +104,31 @@ public class UpdateController {
 
 
 
+
     @RequestMapping(path = "/edit/{model}", method = RequestMethod.GET)
     public ModelAndView modifyAutomobile(@PathVariable("model") String autoModel, ModelMap model) {
         model.addAllAttributes(searchService.getDataForModifyAutomobile(autoModel));
         return new ModelAndView("modify_automobile", model);
+    }
+
+    @RequestMapping(path = "/edit/{model}/{id}", method = RequestMethod.GET)
+    public View updateAutomobileInDB(@RequestParam("model") String model, @RequestParam("maxPower") double maxPower,
+                                     @RequestParam("maxTorque") double maxTorque, @RequestParam("maxSpeed") double maxSpeed,
+                                     @RequestParam("acceleration") double acceleration, @RequestParam("fuelConsumption") double fuelConsumption,
+                                     @RequestParam("weight") double weight,
+                                     @RequestParam(value = "newKits", required = false) int[] newCarKitsIDs,
+                                     @RequestParam(value = "currentKits", required = false) int[] currentCarKitsIDs,
+                                     @RequestParam(value = "newFactories", required = false) String[] newFactoriesCountries,
+                                     @RequestParam(value = "currentFactories", required = false) String[] currentFactoriesCountries,
+                                     @RequestParam(value = "isDeleteAutomobile", required = false) String isDeleteAutomobile,
+                                     @ModelAttribute("auto") Automobile autoFromModelAttribute) {
+
+        Automobile newAutomobile = new Automobile(model, maxPower, maxTorque, maxSpeed,
+                acceleration, fuelConsumption, weight);
+        updateService.updateAutomobileInDB(newAutomobile, autoFromModelAttribute, newCarKitsIDs, currentCarKitsIDs, newFactoriesCountries,
+                                           currentFactoriesCountries, isDeleteAutomobile);
+
+        return new RedirectView("/");
     }
 
 

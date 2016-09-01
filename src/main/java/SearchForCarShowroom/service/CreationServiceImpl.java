@@ -84,43 +84,4 @@ public class CreationServiceImpl implements CreationService {
         factoryRepo.add(factory);
         return factory;
     }
-
-    @Override
-    public void addPlantToAutomobile(String autoModel, String factoryCountry) {
-        Automobile automobile = autoRepo.getByModel(autoModel);
-        ManufacturingPlant manufacturingPlant = factoryRepo.getByCountry(factoryCountry);
-        automobile.addManufacturingPlant(manufacturingPlant);
-        System.out.println("addPlantToAutomobile +1");
-    }
-
-    @Override
-    public void addCarShowRoomToCarKitByCost(int minCostCarKit, int maxCostCarKit, String nameOfShowroom) {
-        CarShowroom showroom = showroomRepo.getByName(nameOfShowroom);
-        List<CarKit> kits = kitRepo.getByCost(minCostCarKit, maxCostCarKit);
-        Iterator<CarKit> itr = kits.iterator();
-        CarKit tempCarKit = null;
-        while (itr.hasNext()) {
-            tempCarKit = itr.next();
-            if (tempCarKit.getCost()>=minCostCarKit || tempCarKit.getCost()<=maxCostCarKit) {
-                tempCarKit.addCarShowroom(showroom);
-            }
-        }
-    }
-
-    @Override
-    public void addCarShowRoomToCarKit(int CarKitID, int CarShowroomID) {
-        CarKit kit = kitRepo.getById(CarKitID);
-        CarShowroom showroom = showroomRepo.getById(CarShowroomID);
-        kit.addCarShowroom(showroom);
-    }
-
-    @Override
-    public void addCarKitToAutomobile (String model, int carKitId) {
-        Automobile auto = autoRepo.getByModel(model);
-        CarKit kit = kitRepo.getById(carKitId);
-        CarKit temp = new CarKit(kit.isWindowTinting(),kit.isAlloyWheels(),kit.isImmobiliser(),kit.isRadioEquipment(),
-                                    kit.isCruiseControl(),kit.getCost());
-        temp.setAuto(auto);
-        kitRepo.add(temp);
-    }
 }

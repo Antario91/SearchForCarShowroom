@@ -19,8 +19,4 @@ public interface CreationService {
     CarShowroom createCarShowroom (String name, String country, String city, String street);
     ManufacturingPlant createManufacturingPlant (ManufacturingPlant factory);
     ManufacturingPlant createManufacturingPlant (String country);
-    void addPlantToAutomobile (String autoModel, String factoryCountry);
-    void addCarShowRoomToCarKitByCost (int minCostCarKit, int maxCostCarKit, String nameOfShowroom);
-    void addCarShowRoomToCarKit(int CarKitID, int CarShowroomID);
-    void addCarKitToAutomobile (String model, int carKitId);
 }
