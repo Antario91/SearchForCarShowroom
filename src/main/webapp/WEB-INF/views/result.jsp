@@ -45,7 +45,7 @@
     <table>
         <tr>
             <td>
-                <form action = "/edit/${kit.getAuto().model}" method = "GET"><input type="submit" value="Изменить"></form>
+                <form action = "/edit/automobile/${kit.getAuto().id}" method = "GET"><input type="submit" value="Изменить"></form>
             </td>
         </tr>
     </table>

@@ -177,6 +177,16 @@ public class Automobile implements Serializable {
 
 	}
 
+	public void ifNotEqualsSetProperies(Automobile comparableAuto) {
+		if (Double.compare(comparableAuto.getMaxPower(), getMaxPower()) != 0) this.maxPower = comparableAuto.getMaxPower();
+		if (Double.compare(comparableAuto.getMaxTorque(), getMaxTorque()) != 0) this.maxTorque = comparableAuto.getMaxTorque();
+		if (Double.compare(comparableAuto.getMaxSpeed(), getMaxSpeed()) != 0) this.maxSpeed = comparableAuto.getMaxSpeed();
+		if (Double.compare(comparableAuto.getAcceleration(), getAcceleration()) != 0) this.acceleration = comparableAuto.getAcceleration();
+		if (Double.compare(comparableAuto.getFuelConsumption(), getFuelConsumption()) != 0) this.fuelConsumption = comparableAuto.getFuelConsumption();
+		if (Double.compare(comparableAuto.getWeight(), getWeight()) != 0) this.weight = comparableAuto.getWeight();
+		if (!comparableAuto.getModel().equals(getModel()))this.model = comparableAuto.getModel();
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(model, maxPower, maxTorque, maxSpeed, acceleration, fuelConsumption, weight);

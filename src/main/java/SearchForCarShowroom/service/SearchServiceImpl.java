@@ -209,9 +209,9 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public Map<String,Object> getDataForModifyAutomobile(String autoModel) {
+    public Map<String,Object> getDataForModifyAutomobile(int id) {
         Map<String, Object> temp = new HashMap<>();
-        Automobile auto = findAutomobileByModel(autoModel);
+        Automobile auto = autoRepo.getById(id);
         temp.put("auto", auto);
 
         List<CarKit> currentCarKits = auto.getCarKit();

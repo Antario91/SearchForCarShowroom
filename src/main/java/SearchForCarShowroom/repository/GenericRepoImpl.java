@@ -65,10 +65,4 @@ public class GenericRepoImpl<T> implements GenericRepo<T> {
                 .add(Restrictions.eq(field, value))
                 .uniqueResult();
     }
-
-//    public List<?> checkingDataBases (){
-//        return sessionFactory.getCurrentSession()
-//                .createQuery("show databases")
-//                .list();
-//    }
 }

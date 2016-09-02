@@ -14,7 +14,7 @@ public interface UpdateService {
     void addCarShowRoomToCarKit(int CarKitID, int CarShowroomID);
     void addCarKitToAutomobile (String model, int carKitId);
     void removeCarKitFromAutomobile(String model, int carKitId);
-    void updateAutomobileInDB (Automobile newAuto, Automobile autoFromModelAttribute,
+    void updateAutomobileInDB (Automobile modifyingAuto, int idAutoInDB,
                                int[] newCarKitsIDs, int[] currentCarKitsIDs,
                                String[] newFactoriesCountries, String[] currentFactoriesCountries,
                                String isDeleteAutomobile);

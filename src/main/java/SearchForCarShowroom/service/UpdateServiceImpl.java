@@ -122,44 +122,51 @@ public class UpdateServiceImpl implements UpdateService {
     }
 
     @Override
-    public void updateAutomobileInDB (Automobile newAuto, Automobile autoFromModelAttribute,
+    public void updateAutomobileInDB (Automobile modifyingAuto, int idAutoInDB,
                                       int[] newCarKitsIDs, int[] currentCarKitsIDs,
                                       String[] newFactoriesCountries, String[] currentFactoriesCountries,
                                       String isDeleteAutomobile) {
-        if (isDeleteAutomobile == null){
+        try {
+            if (isDeleteAutomobile == null) {
+                isDeleteAutomobile = "false";
+            }
+        }catch (NullPointerException e){
             isDeleteAutomobile = "false";
-        }
-        if (isDeleteAutomobile.equals("true")) {
-            autoRepo.delete(searchService.findAutomobileByModel(autoFromModelAttribute.getModel()));
-            return;
-        }
-
-
-        creationService.createAutomobile(newAuto);
-
-        if (newCarKitsIDs != null){
-            for (int i = 0; i < newCarKitsIDs.length; i++) {
-                addCarKitToAutomobile(newAuto.getModel(), newCarKitsIDs[i]);
+        }finally {
+            if (isDeleteAutomobile.equals("true")) {
+                autoRepo.delete(autoRepo.getById(idAutoInDB));
+                return;
             }
-        }
 
-        if (currentCarKitsIDs != null){
-            for (int i = 0; i < currentCarKitsIDs.length; i++) {
-                removeCarKitFromAutomobile(newAuto.getModel(), currentCarKitsIDs[i]);
+            Automobile automobileInDB = autoRepo.getById(idAutoInDB);
+            if (!modifyingAuto.equals(automobileInDB)) {
+                automobileInDB.ifNotEqualsSetProperies(modifyingAuto);
+                creationService.createAutomobile(automobileInDB);
             }
-        }
 
-        if (newFactoriesCountries != null){
-            for (int i = 0; i < newFactoriesCountries.length; i++) {
-                addPlantToAutomobile(newAuto.getModel(), newFactoriesCountries[i]);
+            if (newCarKitsIDs != null){
+                for (int i = 0; i < newCarKitsIDs.length; i++) {
+                    addCarKitToAutomobile(modifyingAuto.getModel(), newCarKitsIDs[i]);
+                }
             }
-        }
 
-        if (currentFactoriesCountries != null){
-            for (int i = 0; i < currentFactoriesCountries.length; i++) {
-                removePlantFromAutomobile(newAuto.getModel(), currentFactoriesCountries[i]);
+            if (currentCarKitsIDs != null){
+                for (int i = 0; i < currentCarKitsIDs.length; i++) {
+                    removeCarKitFromAutomobile(modifyingAuto.getModel(), currentCarKitsIDs[i]);
+                }
+            }
+
+            if (newFactoriesCountries != null){
+                for (int i = 0; i < newFactoriesCountries.length; i++) {
+                    addPlantToAutomobile(modifyingAuto.getModel(), newFactoriesCountries[i]);
+                }
+            }
+
+            if (currentFactoriesCountries != null){
+                for (int i = 0; i < currentFactoriesCountries.length; i++) {
+                    removePlantFromAutomobile(modifyingAuto.getModel(), currentFactoriesCountries[i]);
+                }
             }
         }
     }
-
 }

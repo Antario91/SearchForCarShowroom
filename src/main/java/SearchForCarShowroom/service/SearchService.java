@@ -30,5 +30,5 @@ public interface SearchService {
     Map<String,Object> getAllCarKitsAndAllCarShowrooms();
     Map<Integer, List<ManufacturingPlant>> findFactoriesOfAutomobile(List<CarKit> carKits);
     Map<Integer, List<CarShowroom>> findCarShowroomOfCarKit(List<CarKit> carKits);
-    Map<String,Object> getDataForModifyAutomobile(String autoModel);
+    Map<String,Object> getDataForModifyAutomobile(int id);
 }

@@ -105,27 +105,22 @@ public class UpdateController {
 
 
 
-    @RequestMapping(path = "/edit/{model}", method = RequestMethod.GET)
-    public ModelAndView modifyAutomobile(@PathVariable("model") String autoModel, ModelMap model) {
-        model.addAllAttributes(searchService.getDataForModifyAutomobile(autoModel));
+    @RequestMapping(path = "/edit/automobile/{id}", method = RequestMethod.GET)
+    public ModelAndView modifyAutomobile(@PathVariable("id") int id, ModelMap model) {
+        model.addAllAttributes(searchService.getDataForModifyAutomobile(id));
         return new ModelAndView("modify_automobile", model);
     }
 
-    @RequestMapping(path = "/edit/{model}/{id}", method = RequestMethod.GET)
-    public View updateAutomobileInDB(@RequestParam("model") String model, @RequestParam("maxPower") double maxPower,
-                                     @RequestParam("maxTorque") double maxTorque, @RequestParam("maxSpeed") double maxSpeed,
-                                     @RequestParam("acceleration") double acceleration, @RequestParam("fuelConsumption") double fuelConsumption,
-                                     @RequestParam("weight") double weight,
+    @RequestMapping(path = "/edit/automobile/{id}", method = RequestMethod.POST)
+    public View updateAutomobileInDB(@ModelAttribute("auto") Automobile modifyingAuto,
+                                     @PathVariable("id") int idAutoInDB,
                                      @RequestParam(value = "newKits", required = false) int[] newCarKitsIDs,
                                      @RequestParam(value = "currentKits", required = false) int[] currentCarKitsIDs,
                                      @RequestParam(value = "newFactories", required = false) String[] newFactoriesCountries,
                                      @RequestParam(value = "currentFactories", required = false) String[] currentFactoriesCountries,
-                                     @RequestParam(value = "isDeleteAutomobile", required = false) String isDeleteAutomobile,
-                                     @ModelAttribute("auto") Automobile autoFromModelAttribute) {
+                                     @RequestParam(value = "isDeleteAutomobile", required = false) String isDeleteAutomobile) {
 
-        Automobile newAutomobile = new Automobile(model, maxPower, maxTorque, maxSpeed,
-                acceleration, fuelConsumption, weight);
-        updateService.updateAutomobileInDB(newAutomobile, autoFromModelAttribute, newCarKitsIDs, currentCarKitsIDs, newFactoriesCountries,
+        updateService.updateAutomobileInDB(modifyingAuto, idAutoInDB, newCarKitsIDs, currentCarKitsIDs, newFactoriesCountries,
                                            currentFactoriesCountries, isDeleteAutomobile);
 
         return new RedirectView("/");
