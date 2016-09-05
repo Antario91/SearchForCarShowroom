@@ -1,69 +1,106 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Carousel Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+</head>
 <body>
 <h2>Выберете критерии поиска:</h2>
-<form:form modelAttribute="SearchObject" action="/result">
-    <table>
-       <tr>
-           <td>
-           <p>Выберете модель автомобиля: <form:select path="model">
-                                               <form:option value="null" label="Не учитывать"/>
-                                               <form:options items="${modelList}"/>
-                                         </form:select>
-           <br>
-           <br>
-           </p>
-           </td>
-       </tr>
-       <tr>
-            <td>Укажите цену автомобиля: от <form:input path="minCost"/> грн. до <form:input path="maxCost"/> грн. <br><br></td>
-       </tr>
-       <tr>
-            <td>
-            <p>Укажите требуемые характеристики комплектации:</p>
-            </td>
-       </tr>
-       <tr>
-            <td>
-            <p>Тонировка стекла: <form:select path="windowTinting">
-                                    <form:option value="null">Не учитывать</form:option>
-                                    <form:option value="true">+</form:option>
-                                    <form:option value="false">-</form:option>
-                              </form:select>
-            </p>
-            <p>Легкосплавные диски: <form:select path="alloyWheels">
-                                        <form:option value="null">Не учитывать</form:option>
-                                        <form:option value="true">+</form:option>
-                                        <form:option value="false">-</form:option>
-                                 </form:select>
-            </p>
-            <p>Immobiliser: <form:select path="immobiliser">
+<form:form modelAttribute="SearchObject" action="/result" role="form">
+ <p>
+   <label>
+        Выберете модель автомобиля:
+        <form:select path="model" class="form-control">
+              <form:option value="null" label="Не учитывать"/>
+              <form:options items="${modelList}"/>
+            </form:select>
+    </label>
+  </p>
+
+  <p class="text">
+    <b>Укажите цену автомобиля:
+    <form:input path="minCost" class="form-group" /> грн. до <form:input path="maxCost" class="form-group"/> грн.
+    </b>
+  </p>
+
+
+  <p class="text"><b>Укажите требуемые характеристики комплектации:</b></p>
+
+  <label>
+      Тонировка стекла:
+      <form:select path="windowTinting" class="form-control">
+                              <form:option value="null">Не учитывать</form:option>
+                              <form:option value="true">+</form:option>
+                              <form:option value="false">-</form:option>
+                        </form:select>
+  </label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+  <label>
+    Легкосплавные диски:
+    <form:select path="alloyWheels" class="form-control">
                                 <form:option value="null">Не учитывать</form:option>
                                 <form:option value="true">+</form:option>
                                 <form:option value="false">-</form:option>
                          </form:select>
-            </p>
-            <p>Радиоподготовка: <form:select path="radioEquipment">
-                                    <form:option value="null">Не учитывать</form:option>
-                                    <form:option value="true">+</form:option>
-                                    <form:option value="false">-</form:option>
-                             </form:select>
-            </p>
-            <p>Круиз-контроль: <form:select path="cruiseControl">
-                                    <form:option value="null">Не учитывать</form:option>
-                                    <form:option value="true">+</form:option>
-                                    <form:option value="false">-</form:option>
-                            </form:select>
-            <p>
-            </td>
-       </tr>
-        <tr>
-            <td align="center">
-                <input type="submit" value="Поиск"/>
-            </td>
-        </tr>
-    </table>
+  </label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+  <label>
+    Immobiliser:
+    <form:select path="immobiliser" class="form-control">
+                        <form:option value="null">Не учитывать</form:option>
+                        <form:option value="true">+</form:option>
+                        <form:option value="false">-</form:option>
+                 </form:select>
+
+  </label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+  <label>
+    Радиоподготовка:
+    <form:select path="radioEquipment" class="form-control">
+                            <form:option value="null">Не учитывать</form:option>
+                            <form:option value="true">+</form:option>
+                            <form:option value="false">-</form:option>
+                     </form:select>
+
+  </label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+  <label>
+    Круиз-контроль:
+    <form:select path="cruiseControl" class="form-control">
+                            <form:option value="null">Не учитывать</form:option>
+                            <form:option value="true">+</form:option>
+                            <form:option value="false">-</form:option>
+                    </form:select>
+  </label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<p>
+<input type="submit" value="Поиск" class="btn btn-primary">
+</p>
+
 </form:form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js" />"></script>
 </body>
 </html>
