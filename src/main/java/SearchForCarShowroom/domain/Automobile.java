@@ -36,6 +36,10 @@ public class Automobile implements Serializable {
 	
 	@Column(name = "`Weight(kg)`")
 	private double weight;
+
+	@Column(name = "Image")
+	@Lob
+	private byte[] image;
 	
 	@OneToMany(mappedBy = "auto", orphanRemoval = true, cascade = CascadeType.ALL)
 	private List<CarKit> carKit;
@@ -123,6 +127,14 @@ public class Automobile implements Serializable {
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image){
+		this.image = image;
 	}
 	
 	public List<CarKit> getCarKit(){

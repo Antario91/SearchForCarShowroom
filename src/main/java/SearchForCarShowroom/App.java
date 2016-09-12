@@ -6,6 +6,9 @@ import SearchForCarShowroom.config.SpringConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.persistence.Lob;
+import java.sql.Blob;
+
 /**
  * Hello world!
  *

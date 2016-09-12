@@ -43,7 +43,9 @@ public class SearchController {
         model.put("searchingResults", (List<CarKit>) dataForResults.get("results"));
         model.put("factories", (Map<Integer, List<ManufacturingPlant>>) dataForResults.get("factories"));
         model.put("showrooms", (Map<Integer, List<CarShowroom>>) dataForResults.get("showrooms"));
+        model.put("images", (Map<String, byte[]>) dataForResults.get("images"));
 
+//        model = searchService.getDataForResults(search.getModel(), price, search.getDescription());
         return new ModelAndView("result", model);
     }
 }

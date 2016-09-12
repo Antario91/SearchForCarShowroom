@@ -93,7 +93,7 @@
           <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda.jpg" />" alt="Skoda" width="620" height="380">
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda.jpg" />" alt="Skoda" width="620" height="380"></p>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda-Spaceback.jpg" />" alt="Skoda-Spaceback" width="620" height="380">
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda-Spaceback.jpg" />" alt="Skoda-Spaceback" width="620" height="380"></p>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Fourth slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda-Fabia_RS.jpg" />" alt="Skoda-Fabia_RS" width="620" height="380">
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda-Fabia_RS.jpg" />" alt="Skoda-Fabia_RS" width="620" height="380"></p>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Fifth slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda-Superb.jpg" />" alt="Skoda-Superb" width="590" height="380">
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda-Superb.jpg" />" alt="Skoda-Superb" width="590" height="380">
             </div>
           </div>
         </div>
@@ -125,15 +125,14 @@
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Sixth slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda-Octavia_RS.jpg" />" alt="Skoda-Octavia_RS" width="800" height="380">
-            </div>
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda-Octavia_RS.jpg" />" alt="Skoda-Octavia_RS" width="800" height="380"></p>            </div>
           </div>
         </div>
         <div class="item">
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Seventh slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda-Yeti.jpg" />" alt="Skoda-Yeti" width="620" height="380">
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda-Yeti.jpg" />" alt="Skoda-Yeti" width="620" height="380"></p>
             </div>
           </div>
         </div>
@@ -141,7 +140,7 @@
           <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Eighth slide">
           <div class="container">
             <div class="carousel-caption">
-              <img src="<c:url value="/resources/images/Skoda-Kodiaq.jpg" />" alt="Skoda-Kodiaq" width="620" height="380">
+              <p text-align: center;><img src="<c:url value="/resources/images/Skoda-Kodiaq.jpg" />" alt="Skoda-Kodiaq" width="620" height="380"></p>
             </div>
           </div>
         </div>

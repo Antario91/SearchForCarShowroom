@@ -12,11 +12,18 @@
   <meta name="author" content="">
 
   <title>Carousel Template for Bootstrap</title>
+  <style>
+     .ttbody {
+				text-shadow: 1px 1px 1px black;
+                background-color: #9c9c9c;
+                color: #f1f1f1;
+             }
+  </style>
 
   <!-- Bootstrap core CSS -->
   <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
 </head>
-<body>
+<body class="ttbody">
 <h2>Выберете критерии поиска:</h2>
 <form:form modelAttribute="SearchObject" action="/result" role="form">
  <p>
@@ -31,7 +38,7 @@
 
   <p class="text">
     <b>Укажите цену автомобиля:
-    <form:input path="minCost" class="form-group" /> грн. до <form:input path="maxCost" class="form-group"/> грн.
+    от <font color="#000000"><form:input path="minCost" class="form-group" /></font> грн. до <font color="#000000"><form:input path="maxCost" class="form-group"/></font> грн.
     </b>
   </p>
 
