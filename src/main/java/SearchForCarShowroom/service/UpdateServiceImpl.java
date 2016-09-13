@@ -125,7 +125,7 @@ public class UpdateServiceImpl implements UpdateService {
     public void updateAutomobileInDB (Automobile modifyingAuto, int idAutoInDB,
                                       int[] newCarKitsIDs, int[] currentCarKitsIDs,
                                       String[] newFactoriesCountries, String[] currentFactoriesCountries,
-                                      String isDeleteAutomobile) {
+                                      String isDeleteAutomobile, byte[] image) {
         try {
             if (isDeleteAutomobile == null) {
                 isDeleteAutomobile = "false";
@@ -166,6 +166,10 @@ public class UpdateServiceImpl implements UpdateService {
                 for (int i = 0; i < currentFactoriesCountries.length; i++) {
                     removePlantFromAutomobile(modifyingAuto.getModel(), currentFactoriesCountries[i]);
                 }
+            }
+
+            if (image.length != 0){
+                automobileInDB.setImage(image);
             }
         }
     }

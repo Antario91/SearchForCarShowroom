@@ -17,5 +17,5 @@ public interface UpdateService {
     void updateAutomobileInDB (Automobile modifyingAuto, int idAutoInDB,
                                int[] newCarKitsIDs, int[] currentCarKitsIDs,
                                String[] newFactoriesCountries, String[] currentFactoriesCountries,
-                               String isDeleteAutomobile);
+                               String isDeleteAutomobile, byte[] image);
 }

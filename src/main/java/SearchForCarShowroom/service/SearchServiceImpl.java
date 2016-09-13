@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 
+import java.io.ByteArrayOutputStream;
 import java.util.*;
 
 /**
@@ -58,6 +59,11 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public CarKit findCarKitByID(int id) {
         return kitRepo.getById(id);
+    }
+
+    @Override
+    public Automobile findAutomobileByID(int id) {
+        return autoRepo.getById(id);
     }
 
     @Override
@@ -120,7 +126,6 @@ public class SearchServiceImpl implements SearchService {
         List<CarKit> results = null;
         Map<Integer, List<ManufacturingPlant>> factories = null;
         Map<Integer, List<CarShowroom>> showrooms = null;
-        Map<String, byte[]> images = null;
 
         if (autoModel.equals("null")){
             results = findByCostAndDescription(price, description);
@@ -132,16 +137,10 @@ public class SearchServiceImpl implements SearchService {
 
         factories = findFactoriesOfAutomobile(results);
         showrooms = findCarShowroomOfCarKit(results);
-        for (CarKit kit:results){
-            if (!(kit.getAuto().getImage() == null)) {
-                images.put(kit.getAuto().getModel(), kit.getAuto().getImage());
-            }
-        }
 
         temp.put("results", results);
         temp.put("factories", factories);
         temp.put("showrooms", showrooms);
-        temp.put("images", images);
 
         return temp;
     }

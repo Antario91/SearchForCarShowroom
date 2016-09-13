@@ -67,7 +67,7 @@
         <table>
             <tr>
                 <td>
-                    <img src="${images.get(kit.getAuto().model)}" />
+                    <img src="/image/automobile/${kit.getAuto().id}" height="300"/>
                 </td>
             </tr>
         </table>

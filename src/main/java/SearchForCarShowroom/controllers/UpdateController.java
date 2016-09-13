@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -118,10 +122,20 @@ public class UpdateController {
                                      @RequestParam(value = "currentKits", required = false) int[] currentCarKitsIDs,
                                      @RequestParam(value = "newFactories", required = false) String[] newFactoriesCountries,
                                      @RequestParam(value = "currentFactories", required = false) String[] currentFactoriesCountries,
-                                     @RequestParam(value = "isDeleteAutomobile", required = false) String isDeleteAutomobile) {
+                                     @RequestParam(value = "isDeleteAutomobile", required = false) String isDeleteAutomobile,
+                                     @RequestParam(value = "file") MultipartFile file) {
+
+        byte[] image = new byte[0];
+        if (file != null) {
+            try {
+                image = file.getBytes();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         updateService.updateAutomobileInDB(modifyingAuto, idAutoInDB, newCarKitsIDs, currentCarKitsIDs, newFactoriesCountries,
-                                           currentFactoriesCountries, isDeleteAutomobile);
+                                           currentFactoriesCountries, isDeleteAutomobile, image);
 
         return new RedirectView("/");
     }

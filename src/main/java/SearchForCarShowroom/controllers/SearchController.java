@@ -8,11 +8,11 @@ import SearchForCarShowroom.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -43,9 +43,15 @@ public class SearchController {
         model.put("searchingResults", (List<CarKit>) dataForResults.get("results"));
         model.put("factories", (Map<Integer, List<ManufacturingPlant>>) dataForResults.get("factories"));
         model.put("showrooms", (Map<Integer, List<CarShowroom>>) dataForResults.get("showrooms"));
-        model.put("images", (Map<String, byte[]>) dataForResults.get("images"));
 
 //        model = searchService.getDataForResults(search.getModel(), price, search.getDescription());
         return new ModelAndView("result", model);
+    }
+
+    @RequestMapping(path = "/image/automobile/{id}", method = RequestMethod.GET)
+    public void showImage (@PathVariable("id") int id, HttpServletResponse response) throws IOException {
+        response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+        response.getOutputStream().write(searchService.findAutomobileByID(id).getImage());
+        response.getOutputStream().close();
     }
 }

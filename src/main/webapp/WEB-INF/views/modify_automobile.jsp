@@ -3,7 +3,7 @@
 <html>
 <body>
 <h3>Изменение записи автомобиля в базе данных</h3>
-<form action="/edit/automobile/${auto.id}" method="POST">
+<form enctype="multipart/form-data" action="/edit/automobile/${auto.id}" method="POST">
     <table>
         <tr>
             <td>
@@ -71,6 +71,7 @@
                                                                                     </td>
         </tr>
         <tr><td colspan = "2"><input type="checkbox" name="isDeleteAutomobile" value="true" />Удалить автомобиль из БД</td></tr>
+        <tr><td><input type="file" name="file"></td></tr>
         <tr><td><input type="submit" value="Изменить"></td></tr>
     </table>
 </form>

@@ -17,6 +17,7 @@ public interface SearchService {
     List<CarKit> findAllCarKits();
     List<CarShowroom> findAllCarShowroom();
     CarKit findCarKitByID(int id);
+    Automobile findAutomobileByID(int id);
     Automobile findAutomobileByModel(String model);
     ManufacturingPlant findManufacturingPlantByCountry(String country);
     List<ManufacturingPlant> findAllManufacturingPlant();
